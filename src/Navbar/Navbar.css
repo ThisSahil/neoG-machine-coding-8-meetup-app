@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #f4f4f5;
+  display: flex;
+  justify-content: space-around;
+  height: 13vh;
+  /* margin-top: 1rem; */
+  align-items: center;
+}
+
+.navbar-search input {
+  height: 20%;
+  padding: 1rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
