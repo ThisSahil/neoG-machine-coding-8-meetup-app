@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import "./Dropdown.css";
+import { MeetingState } from "../context/Context";
 
 const Dropdown = () => {
-  const [selectedOption, setSelectedOption] = useState("");
+  // const [selectedOption, setSelectedOption] = useState("");
+
+  const { meetingState, meetingDispatch } = MeetingState();
 
   const handleChange = (event) => {
-    setSelectedOption(event.target.value);
+    // console.log(event.target.value);
+    // setSelectedOption(event.target.value);
+    meetingDispatch({ type: "FILTER_OPTION", payload: event.target.value });
+    console.log(meetingState);
   };
 
   return (
     <div className="dropdown-container">
       <select
         className="dropdown"
-        value={selectedOption}
+        value={meetingState.filter}
         onChange={handleChange}
       >
         <option value="" disabled>

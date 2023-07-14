@@ -7,6 +7,8 @@ const MeetingContext = createContext();
 const Context = ({ children }) => {
   const [meetingState, meetingDispatch] = useReducer(meetingReducer, {
     meetings: [],
+    filter: "",
+    search: "",
   });
 
   const fetchMeetings = () => {

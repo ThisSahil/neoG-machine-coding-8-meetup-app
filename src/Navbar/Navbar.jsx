@@ -1,10 +1,24 @@
 import React from "react";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
+import { MeetingState } from "../context/Context";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const { meetingState, meetingDispatch } = MeetingState();
+
+  const handleSearchChange = (e) => {
+    meetingDispatch({ type: "FILTER_SEARCH", payload: e.target.value });
+  };
+
   return (
     <div className="navbar">
-      <div className="navbar-logo">
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate("/")}
+        className="navbar-logo"
+      >
         {/* <img src="logo.png" alt="Logo" /> */}
         <svg
           viewBox="0 0 111 40"
@@ -19,7 +33,11 @@ const Navbar = () => {
         </svg>
       </div>
       <div className="navbar-search">
-        <input type="text" placeholder="Search by title and tags..." />
+        <input
+          onChange={handleSearchChange}
+          type="text"
+          placeholder="Search by title and tags..."
+        />
       </div>
     </div>
   );
